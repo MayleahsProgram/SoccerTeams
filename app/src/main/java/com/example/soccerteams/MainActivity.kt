@@ -21,13 +21,14 @@ import androidx.core.view.WindowInsetsCompat
 // create function here --------------------------------------------------------------------------
 
 class MainActivity : AppCompatActivity() {
-
+    // global function
     val teams = arrayOf("Man Sundowns FC", "Orlando Pirates", "Bid vest Wits",
         "Stellenbosch FC", "Sek United FC")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        // local function
 
         val teamsText = findViewById<TextView>(R.id.teamsText)
 
