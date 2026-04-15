@@ -7,6 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+//created function to display array values in terminal
+// fun logArrValues(arr: Array<String>, limit: Int =0){
+//if statement to check if there is a limit - if there is a limit, cut the array at that index
+// If (limit == 0){
+// Log.v("Array values:", Arrays.toString(arr))
+// }
+// else
+// {
+//   Log.v("Array values:", Arrays.toString(arr.sliceArray(0..limit-1)))
+// }
+// }
+// create function here --------------------------------------------------------------------------
+
 class MainActivity : AppCompatActivity() {
 
     val teams = arrayOf("Man Sundowns FC", "Orlando Pirates", "Bid vest Wits",
@@ -21,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         teams[0] = "Man Sundowns Fc :)"
 
         //variable to hold all teams ready to display
-        var teamsDisplay = $$""
+        var teamsDisplay = ""
         teamsDisplay += "${teams[0]}\n"
         teamsDisplay += "${teams[1]}\n"
         teamsDisplay += "${teams[2]}\n"
@@ -29,7 +42,14 @@ class MainActivity : AppCompatActivity() {
         teamsDisplay +="${teams[4]}\n"
 
         //displaying top soccer team in text view on UI
-        teamsText.text = teams[0]
+        teamsText.text = teamsDisplay
+
+        // add all teams to the display string
+        var counter = 0
+        while (counter < teams.count()){
+            teamsDisplay += "${teams[counter]}\n"
+            counter++
+        }
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
