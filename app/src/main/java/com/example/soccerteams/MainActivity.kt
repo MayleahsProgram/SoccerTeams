@@ -31,25 +31,33 @@ class MainActivity : AppCompatActivity() {
         // local function
 
         val teamsText = findViewById<TextView>(R.id.teamsText)
-
-        teams[0] = "Man Sundowns Fc :)"
-
-        //variable to hold all teams ready to display
         var teamsDisplay = ""
-        teamsDisplay += "${teams[0]}\n"
-        teamsDisplay += "${teams[1]}\n"
-        teamsDisplay += "${teams[2]}\n"
-        teamsDisplay += "${teams[3]}\n"
-        teamsDisplay +="${teams[4]}\n"
+
 
         //displaying top soccer team in text view on UI
         teamsText.text = teamsDisplay
+
+        //assigning the starting position
+        teams[0]= "Man Sundowns FC"
 
         // add all teams to the display string
         var counter = 0
         while (counter < teams.count()){
             teamsDisplay += "${teams[counter]}\n"
             counter++
+        }
+
+        //Look for the shortest string entry in the string array
+        fun getShortestString(arr: Array<String>) : String {
+            var shortestLength = 0
+            var shortestString = ""
+            for(element in arr){
+                if (element.count() > shortestLength){
+                    shortestLength = element.count()
+                    shortestString  = element
+                }
+            }
+            return shortestString
         }
 
 
