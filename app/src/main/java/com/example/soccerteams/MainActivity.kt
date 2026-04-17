@@ -2,6 +2,7 @@ package com.example.soccerteams
 
 import android.os.Bundle
 import android.widget.TextView
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,21 +23,22 @@ import androidx.core.view.WindowInsetsCompat
 
 //Look for the shortest string entry in the string array
 fun getShortestString(arr: Array<String>) : String {
-    var shortestLength = 0
-    var shortestString = ""
-    for(element in arr){
-        if (element.count() > shortestLength){
-            shortestLength = element.count()
-            shortestString  = element
+    var shortestString = arr[0]
+
+    for (element in arr) {
+        if (element.length < shortestString.length) {
+            shortestString = element
         }
     }
     return shortestString
 }
 
+
 class MainActivity : AppCompatActivity() {
     // global function
     val teams = arrayOf("Man Sundowns FC", "Orlando Pirates", "Bid vest Wits",
         "Stellenbosch FC", "Sek United FC")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,23 +48,24 @@ class MainActivity : AppCompatActivity() {
         // calling the method to log array values
         logArrayValues(teams)
 
-
-        val teamsText = findViewById<TextView>(R.id.teamsText)
+        val teamsText = findViewById<TextView>(R.id.textView2)
         var teamsDisplay = ""
-
-
-        //displaying top soccer team in text view on UI
-        teamsText.text = teamsDisplay
 
         //assigning the starting position
         teams[0]= "Man Sundowns FC"
 
-        // add all teams to the display string
+      // add all teams to display string
         var counter = 0
-        while (counter < teams.count()){
+        while (counter < teams.count()) {
             teamsDisplay += "${teams[counter]}\n"
             counter++
         }
+
+
+        //call on the shortest string in code
+        val shortestTeam = getShortestString(teams)
+
+        teamsText.text = "$teamsDisplay\nShortest Team Name:\n$shortestTeam"
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -71,5 +74,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun logArrayValues(teams: Array<String>) {}
+    private fun logArrayValues(teams: Array<String>) {
+        for (team in teams){
+            Log.v("Array values:", team)
+        }
+    }
 }
