@@ -20,6 +20,19 @@ import androidx.core.view.WindowInsetsCompat
 // }
 // create function here --------------------------------------------------------------------------
 
+//Look for the shortest string entry in the string array
+fun getShortestString(arr: Array<String>) : String {
+    var shortestLength = 0
+    var shortestString = ""
+    for(element in arr){
+        if (element.count() > shortestLength){
+            shortestLength = element.count()
+            shortestString  = element
+        }
+    }
+    return shortestString
+}
+
 class MainActivity : AppCompatActivity() {
     // global function
     val teams = arrayOf("Man Sundowns FC", "Orlando Pirates", "Bid vest Wits",
@@ -50,20 +63,6 @@ class MainActivity : AppCompatActivity() {
             teamsDisplay += "${teams[counter]}\n"
             counter++
         }
-
-        //Look for the shortest string entry in the string array
-        fun getShortestString(arr: Array<String>) : String {
-            var shortestLength = 0
-            var shortestString = ""
-            for(element in arr){
-                if (element.count() > shortestLength){
-                    shortestLength = element.count()
-                    shortestString  = element
-                }
-            }
-            return shortestString
-        }
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
