@@ -30,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         // local function
 
+        // calling the method to log array values
+        logArrayValues(teams)
+
+
         val teamsText = findViewById<TextView>(R.id.teamsText)
         var teamsDisplay = ""
 
@@ -67,4 +71,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
     }
+
+    private fun logArrayValues(teams: Array<String>) {}
 }
