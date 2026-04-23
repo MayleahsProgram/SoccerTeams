@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         // calling the method to log array values
         logArrayValues(teams)
 
-        val teamsText = findViewById<TextView>(R.id.textView2)
+        val teamsText = findViewById<TextView>(R.id.textView)
         var teamsDisplay = ""
 
         //assigning the starting position
